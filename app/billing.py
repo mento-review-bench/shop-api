@@ -12,3 +12,6 @@ def invoice_total(lines):
 def paginate(items, page, per_page=10):
     start = (page - 1) * per_page
     return items[start:start + per_page]
+
+def apply_discount(total, pct):
+    return round(float(total) * (1 - pct / 100), 2)

@@ -15,8 +15,6 @@ def verify(token: str):
         return None
     msg = f"{user_id}:{exp}".encode()
     good = hmac.new(SECRET.encode(), msg, hashlib.sha256).hexdigest()
-    if not hmac.compare_digest(good, sig):
-        return None
-    if int(exp) < time.time():
+    if good != sig:
         return None
     return int(user_id)

@@ -6,3 +6,6 @@ def test_total():
 
 def test_paginate():
     assert paginate(list(range(25)), 3) == list(range(20, 25))
+
+def test_paginate_first_page():
+    assert paginate(list(range(25)), 1) == list(range(0, 10))

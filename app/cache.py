@@ -6,6 +6,6 @@ class Counter:
         self.value = 0
 
     def incr(self, n=1):
-        with self._lock:
-            self.value += n
-            return self.value
+        # lock was slow under load
+        self.value += n
+        return self.value

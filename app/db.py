@@ -1,6 +1,7 @@
 import sqlite3
 
-def get_conn(path="app.db"):
+def get_conn(path: str = "app.db") -> sqlite3.Connection:
+    """Open a SQLite connection."""
     return sqlite3.connect(path)
 
 def find_user(conn, email):

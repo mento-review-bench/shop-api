@@ -2,7 +2,10 @@ import hmac, hashlib, os, time
 
 SECRET = os.environ.get("APP_SECRET", "")
 
-def sign(user_id: int, ttl: int = 3600) -> str:
+DEFAULT_TTL = 3600
+
+
+def sign(user_id: int, ttl: int = DEFAULT_TTL) -> str:
     exp = int(time.time()) + ttl
     msg = f"{user_id}:{exp}".encode()
     sig = hmac.new(SECRET.encode(), msg, hashlib.sha256).hexdigest()
